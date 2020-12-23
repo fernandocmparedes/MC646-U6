@@ -1,0 +1,8 @@
+#Modulos do react native
+node_modules/
+
+#Diretorio dos screenshots que seram enviados juntos com a atividade
+Screenshots/
+
+#Arquivos do SO
+.DS_Store

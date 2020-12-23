@@ -1,0 +1,38 @@
+<div id="container">
+    <div>
+        <input type="text" placeholder="Insira nome do arquivo">
+        <input type="button" onclick="openFile();" value="Abrir">
+    </div>
+    <div>
+        <div>
+            Abertos anteriormente:
+        </div>
+        <div id="listaRecentes">
+        </div>
+    </div>
+    <div>
+        <div>
+            Conteudo do arquivo aberto:
+        </div>
+        <div id="conteudoArquivo"> 
+        </div> 
+    </div>
+    
+</div>
+<script>
+    var listaRecentes = document.getElementById("listaRecentes");
+    var conteudoArquivo = document.getElementById("conteudoArquivo");
+
+    function openFile() {
+        listaRecentes.innerHTML = "<div>A.txt</div>";
+        conteudoArquivo.innerHTML = "<div>Conteudo do arquivo A.txt</div>";
+    }
+</script>
+<style>
+    #container {
+        height: 200px; width: 400px; 
+        display: flex; flex-direction: column; 
+        justify-content: space-between; align-items: center;
+    }
+
+</style>

@@ -1,6 +1,6 @@
 <div id="container">
     <div>
-        <input type="text" placeholder="Insira nome do arquivo">
+        <input type="text" id="nomeArquivo" placeholder="Insira nome do arquivo">
         <input type="button" onclick="openFile();" value="Abrir">
     </div>
     <div>
@@ -12,7 +12,7 @@
     </div>
     <div>
         <div>
-            Conteudo do arquivo aberto:
+            Conteudo do arquivo aberto:˜
         </div>
         <div id="conteudoArquivo"> 
         </div> 
@@ -20,10 +20,22 @@
     
 </div>
 <script>
+
+    //teste 2: recentes armazena os nomes dos arquivos abertos mais recentemente
+    var recentes = [];
+
+    var nomeArquivo = document.getElementById("nomeArquivo");
     var listaRecentes = document.getElementById("listaRecentes");
     var conteudoArquivo = document.getElementById("conteudoArquivo");
 
     function openFile() {
+
+        //teste 2: atualizando recentes a cada passo
+        let pos = recentes.indexOf(nomeArquivo.value);
+        if(pos != -1) recentes.splice(pos, 1); 
+        recentes = [nomeArquivo.value].concat(recentes);
+        console.log(recentes)
+
         listaRecentes.innerHTML = "<div>A.txt</div>";
         conteudoArquivo.innerHTML = "<div>Conteudo do arquivo A.txt</div>";
     }

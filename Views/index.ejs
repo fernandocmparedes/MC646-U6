@@ -101,7 +101,7 @@
         //teste 4: exibindo a lista de recentes em tela aos usuarios
         listaRecentes.innerHTML = "";
         recentes.forEach(element => {
-            listaRecentes.innerHTML += `<a>${element}</a>`;
+            listaRecentes.innerHTML += `<a onclick="linkClicado('${element}');">${element}</a>`;
         });
     }
 
@@ -110,6 +110,13 @@
         recentes = [];
         listaRecentes.innerHTML = "";
     }
+
+    //teste 11: Abrir arquivos clicando em seus nomes na lista
+    function linkClicado(nomeLink) {
+        nomeArquivo.value = nomeLink;
+        acessarArquivo();
+    }
+
     
 </script>
 <style>
@@ -162,6 +169,14 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    a {
+        cursor: pointer;
+    }
+
+    a:hover {
+        color: cornflowerblue;
     }
 
 

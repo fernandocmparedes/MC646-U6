@@ -5,7 +5,11 @@
     </div>
     <div>
         <!-- teste 7: permitir limpar lista de abertos recentemente -->
-        <input type="button" value="Limpar" onclick="limpar();">
+        <input type="button" value="Esvaziar lista" onclick="limpar();">
+
+        <!-- teste 8: permitir habilitar / desabilitar atualização da lista de abertos recentemente -->
+        <input type="button" id="botaoHabilitar" value="Habilitar atualização da lista" onclick="habilitar();" style="display: none;">
+        <input type="button" id="botaoDesabilitar" value="Desabilitar atualização da lista" onclick="desabilitar();" >
     </div>
     <div>
         <div>
@@ -25,12 +29,27 @@
 </div>
 <script>
 
-    //teste 2: recentes armazena os nomes dos arquivos abertos mais recentemente
-    var recentes = [];
-
     var nomeArquivo = document.getElementById("nomeArquivo");
     var listaRecentes = document.getElementById("listaRecentes");
     var conteudoArquivo = document.getElementById("conteudoArquivo");
+    var botaoHabilitar = document.getElementById("botaoHabilitar");
+    var botaoDesabilitar = document.getElementById("botaoDesabilitar");
+
+    //teste 2: recentes armazena os nomes dos arquivos abertos mais recentemente
+    var recentes = [];
+
+    //teste 8: permitir habilitar / desabilitar atualização da lista de abertos recentemente
+    var habilitarLigado = true;
+    function habilitar() {
+        habilitarLigado = true;
+        botaoHabilitar.style.display = "none";
+        botaoDesabilitar.style.display = "";
+    }
+    function desabilitar() {
+        habilitarLigado = false;
+        botaoDesabilitar.style.display = "none";
+        botaoHabilitar.style.display = "";
+    }
 
     async function acessarArquivo() {
 
@@ -38,6 +57,7 @@
 
         //teste 3: verificando o nome do arquivo antes de acessá-lo   
         var validarNomeRegex = /^\w+\.\w+$/;
+
         if(!validarNomeRegex.test(nome)) {
             alert("Insira um nome valido!");
             return;
@@ -67,6 +87,9 @@
             return;
         }
 
+        //teste 8: habilitarLigado eh false entao nao atualiza lista
+        if(!habilitarLigado) return;
+
         //teste 2: atualizando recentes a cada passo
         let pos = recentes.indexOf(nome);
         if(pos != -1) recentes.splice(pos, 1); 
@@ -84,6 +107,8 @@
         recentes = [];
         listaRecentes.innerHTML = "";
     }
+
+    
 </script>
 <style>
     #container {

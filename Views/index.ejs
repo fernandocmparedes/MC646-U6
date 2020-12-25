@@ -4,6 +4,10 @@
         <input type="button" onclick="acessarArquivo();" value="Abrir">
     </div>
     <div>
+        <!-- teste 7: permitir limpar lista de abertos recentemente -->
+        <input type="button" value="Limpar" onclick="limpar();">
+    </div>
+    <div>
         <div>
             Abertos recentemente:
         </div>
@@ -12,7 +16,7 @@
     </div>
     <div>
         <div>
-            Conteudo do arquivo aberto:
+            Conteudo do arquivo:
         </div>
         <div id="conteudoArquivo"> 
         </div> 
@@ -73,6 +77,12 @@
         recentes.forEach(element => {
             listaRecentes.innerHTML += `<div>${element}</div>`;
         });
+    }
+
+    //teste 7: permitir limpar lista de arquivos abertos recentemente
+    function limpar() {
+        recentes = [];
+        listaRecentes.innerHTML = "";
     }
 </script>
 <style>

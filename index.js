@@ -11,6 +11,11 @@ app.listen(port, () => {
 
 app.set('view engine', 'ejs');
 
-app.get("*", async (req, res) => {
+app.get("/", async (req, res) => {
     res.render('index');
+});
+
+app.all("*", async (req, res) => { 
+  res.status(404);
+  res.send("Arquivo ou página não encontrado!")
 });

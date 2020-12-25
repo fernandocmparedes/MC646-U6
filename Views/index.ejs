@@ -28,7 +28,7 @@
     var listaRecentes = document.getElementById("listaRecentes");
     var conteudoArquivo = document.getElementById("conteudoArquivo");
 
-    function acessarArquivo() {
+    async function acessarArquivo() {
 
         var nome = nomeArquivo.value;
 
@@ -39,12 +39,29 @@
             return;
         }
 
+        //teste 6: alertar o usuário quando o arquivo for inexistente ou não puder ser acessado.
+        let erro = false;
+
         //teste 5: acessando e exibindo arquivos do servidor
-        fetch(nome, {method: "get"})
+        await fetch(nome, {method: "get"})
         .then( async (response) => {
+            if(response.status != 200) {
+                erro = true;
+                return;
+            }
             var cont = await response.text();
             conteudoArquivo.innerHTML = `<div>${cont}</div>`;
+        })
+        .catch ( () => {
+            erro = true;
+            return;
         });
+
+        //teste 6: alertar o usuário quando o arquivo for inexistente ou não puder ser acessado.
+        if(erro) {
+            alert("Nao foi possivel acessar o arquivo!");
+            return;
+        }
 
         //teste 2: atualizando recentes a cada passo
         let pos = recentes.indexOf(nome);

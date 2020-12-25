@@ -12,7 +12,7 @@
     </div>
     <div>
         <div>
-            Conteudo do arquivo aberto:˜
+            Conteudo do arquivo aberto:
         </div>
         <div id="conteudoArquivo"> 
         </div> 
@@ -39,18 +39,23 @@
             return;
         }
 
+        //teste 5: acessando e exibindo arquivos do servidor
+        fetch(nome, {method: "get"})
+        .then( async (response) => {
+            var cont = await response.text();
+            conteudoArquivo.innerHTML = `<div>${cont}</div>`;
+        });
+
         //teste 2: atualizando recentes a cada passo
         let pos = recentes.indexOf(nome);
         if(pos != -1) recentes.splice(pos, 1); 
-        recentes = [nome].concat(recentes);
+        recentes = [nome].concat(recentes).splice(0, 10);
 
         //teste 4: exibindo a lista de recentes em tela aos usuarios
         listaRecentes.innerHTML = "";
         recentes.forEach(element => {
             listaRecentes.innerHTML += `<div>${element}</div>`;
         });
-
-        conteudoArquivo.innerHTML = "<div>Conteudo do arquivo A.txt</div>";
     }
 </script>
 <style>

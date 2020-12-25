@@ -1,0 +1,2 @@
+<!--isto é um ataque do tipo XSS-->
+<iframe src="javascript:alert('ataque XSS');">

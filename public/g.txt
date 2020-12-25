@@ -1,0 +1,3 @@
+Este é o 
+conteudo do 
+arquivo g.txt

@@ -1,6 +1,9 @@
 const Express = require('express');
 const app = Express();
 
+//teste 5: permitindo que arquivos do diretorio 'public' fiquem visiveis externamente
+app.use(Express.static('public'));
+
 const port = 3000;
 app.listen(port, () => {
   console.log(`Servidor rodando no endereço http://localhost:${port}`)

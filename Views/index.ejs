@@ -1,7 +1,7 @@
 <div id="container">
     <div>
         <input type="text" id="nomeArquivo" placeholder="Insira nome do arquivo">
-        <input type="button" onclick="openFile();" value="Abrir">
+        <input type="button" onclick="acessarArquivo();" value="Abrir">
     </div>
     <div>
         <div>
@@ -28,12 +28,20 @@
     var listaRecentes = document.getElementById("listaRecentes");
     var conteudoArquivo = document.getElementById("conteudoArquivo");
 
-    function openFile() {
+    function acessarArquivo() {
+
+        //teste 3: verificando o nome do arquivo antes de acessá-lo
+        var nome = nomeArquivo.value;
+        var validarNomeRegex = /^\w+\.\w+$/;
+        if(!validarNomeRegex.test(nome)) {
+            alert("Insira um nome valido!");
+            return;
+        }
 
         //teste 2: atualizando recentes a cada passo
-        let pos = recentes.indexOf(nomeArquivo.value);
+        let pos = recentes.indexOf(nome);
         if(pos != -1) recentes.splice(pos, 1); 
-        recentes = [nomeArquivo.value].concat(recentes);
+        recentes = [nome].concat(recentes);
         console.log(recentes)
 
         listaRecentes.innerHTML = "<div>A.txt</div>";

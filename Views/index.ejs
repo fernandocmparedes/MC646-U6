@@ -5,7 +5,7 @@
     </div>
     <div>
         <div>
-            Abertos anteriormente:
+            Abertos recentemente:
         </div>
         <div id="listaRecentes">
         </div>
@@ -30,8 +30,9 @@
 
     function acessarArquivo() {
 
-        //teste 3: verificando o nome do arquivo antes de acessá-lo
         var nome = nomeArquivo.value;
+
+        //teste 3: verificando o nome do arquivo antes de acessá-lo   
         var validarNomeRegex = /^\w+\.\w+$/;
         if(!validarNomeRegex.test(nome)) {
             alert("Insira um nome valido!");
@@ -42,9 +43,13 @@
         let pos = recentes.indexOf(nome);
         if(pos != -1) recentes.splice(pos, 1); 
         recentes = [nome].concat(recentes);
-        console.log(recentes)
 
-        listaRecentes.innerHTML = "<div>A.txt</div>";
+        //teste 4: exibindo a lista de recentes em tela aos usuarios
+        listaRecentes.innerHTML = "";
+        recentes.forEach(element => {
+            listaRecentes.innerHTML += `<div>${element}</div>`;
+        });
+
         conteudoArquivo.innerHTML = "<div>Conteudo do arquivo A.txt</div>";
     }
 </script>

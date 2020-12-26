@@ -1,4 +1,11 @@
 <div id="container">
+    <div class="bloco" id="observacao">
+        <div>
+            Observacao: 
+        </div>
+        Arquivos disponíveis no servidor: a.txt, b.txt, c.txt, d.txt, e.txt<br>
+        f.txt, g.txt, h.txt, i.txt, j.txt, k.txt, teste.json, teste.csv
+    </div>
     <div class="bloco">
         <input type="text" id="nomeArquivo" placeholder="Insira nome do arquivo">
         <input type="button" onclick="acessarArquivo();" value="Abrir">
@@ -179,5 +186,11 @@
         color: cornflowerblue;
     }
 
+    #observacao {
+        display: flex;
+        color:gray;
+        flex-direction: column;
+        align-items: center;
+    }
 
 </style>

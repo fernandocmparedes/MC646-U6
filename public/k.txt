@@ -1,2 +1,1 @@
-<!--isto é um ataque do tipo XSS-->
-<iframe src="javascript:alert('ataque XSS');">
+<iframe src="javascript:alert('K.txt eh uma simulacao de ataque do tipo XSS');">

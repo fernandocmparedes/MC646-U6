@@ -30,3 +30,5 @@ teste 10: Página com layout mais amigável
 teste 11: Abrir arquivos clicando em seus nomes na lista
 
 teste 12: Observação sobre arquivo disponíveis ao usuário e observacoes gerais em README.md
+
+Teste 13: Proteção contra ataques do tipo XSS, evitando a inserção de código malicioso contido dentro dos arquivos.
